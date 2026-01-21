@@ -3,14 +3,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+/* animation */
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+/* animation end */
+body {
   overflow-x: hidden;
   font-family: "League Spartan", sans-serif;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
-.card{
+.card {
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 10px;
   box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
@@ -18,92 +28,126 @@ html{
   margin: 10px 0 0 0;
   height: 328px;
   display: flex;
- 
 }
-.clothingsGrid{
-  display: grid;
-  grid-template-columns: minmax(225px, 1fr) minmax(225px, 1fr) minmax(225px, 1fr) minmax(225px, 1fr);
-  grid-template-rows: 1fr 1fr;
-  row-gap: 10px;
-  column-gap: 10px;
-  margin: 10px 85px;
-  .namePrice{
-    margin-top: 250px;
+.card.cards {
+  flex-direction: column;
+  .productImageContainer {
+    width: 100%;
+    img {
+      width: 100%;
+      height: 240px;
+      border-radius: 8px;
+    }
   }
-  #clotheName{
+  #clotheName {
     font-family: "League Spartan", sans-serif;
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 12px;
     color: #858383;
-    #price{
+    #price {
       font-family: "League Spartan", sans-serif;
       font-weight: 700;
       font-size: 14px;
     }
   }
 }
-.footer{
+.clothingsGrid {
+  display: grid;
+  grid-template-columns: minmax(225px, 1fr) minmax(225px, 1fr) minmax(
+      225px,
+      1fr
+    ) minmax(225px, 1fr);
+  grid-template-rows: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin: 10px 85px;
+  /* .namePrice{
+    margin-top: 250px;
+  } */
+}
+.footer {
   margin: 0 85px;
-  h4{
+  h4 {
     font-size: 12px;
     color: #858383;
   }
-  .footerHead{
+  .footerHead {
     background-color: #121212;
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    h4{
+    h4 {
       padding: 19px;
-      color: #FFFFFF;
+      color: #ffffff;
       font-weight: 600;
     }
-    form{
+    form {
       display: flex;
       padding: 12px;
+      .btn {
+        color: #858383;
+        border-radius: 1px;
+        padding: 5px;
+        cursor: pointer;
+      }
+      input {
+        padding: 7px;
+      }
+    }
+    .header-right {
+      display: flex;
+      gap: 10px;
+      padding: 14px;
     }
   }
-  .footerBody{
+  .footerBody {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
-    div{
+    div {
       display: flex;
       flex-direction: column;
       row-gap: 20px;
-      a{
+      a {
         text-decoration: none;
         color: #808080;
         font-size: 12px;
-        font-weight: 400
+        font-weight: 400;
       }
+      a:hover {
+        color: #121212;
+      }
+    }
+    .contact .header-left > div {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
     }
   }
 }
-.header{
+.header {
   background-color: black;
   display: flex;
+  justify-content: space-between;
   position: fixed;
   width: 100%;
   top: 0;
-  h6{
+  z-index: 4;
+  h6 {
     padding: 2px;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-left: 8px;
     margin-right: 24px;
     font-weight: 500;
     font-size: 12px;
     font-family: "League Spartan", sans-serif;
   }
-  .header-left{
+  .header-left {
     display: flex;
     margin-left: 85px;
   }
-  .header-right{
-    right: 0;
-    top: 0;
-    position: absolute;
+  .header-right {
     margin-right: 85px;
     display: flex;
     gap: 10px;
@@ -138,173 +182,180 @@ html{
     height: 200px;
   }
 } */
-.hero{
+.hero {
   display: flex;
   height: 80vh;
   gap: 10px;
-  margin: 50px 85px 0 85px;
+  margin: 60px 85px 0 85px;
 
-  .hero-left{
-    width: 50%;
-  }
-  .hero-right{
+  .hero-right {
     width: 100%;
-    .grid-container{
+    .grid-container {
       display: grid;
       height: 80vh;
-      grid-template-columns:minmax(150px, 2fr) minmax(200px, 1fr) minmax(200px, 1fr);
+      grid-template-columns: minmax(150px, 2fr) minmax(200px, 1fr) minmax(
+          200px,
+          1fr
+        );
       /* grid-template-columns: 540px 255px 255px; */
       grid-template-rows: 1fr 1fr;
       gap: 10px;
-      .Explore{
+      img {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        z-index: 1;
+      }
+      .Explore,
+      .women,
+      .men {
+        position: relative;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+      .explore {
+        grid-row: 1 / span 2;
+      }
+      .hero-card.ornament {
+        /* width: auto;
+        height: auto; */
+        grid-column: 2 / span 3;
+      }
+      .hero-text {
+        position: relative;
+        z-index: 2;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        text-align: center;
+        pointer-events: none;
+      }
+      .hero-card {
         border: 1px solid hsl(0, 0%, 80%);
         border-radius: 10px;
         box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
         margin: 10px 0 0 0;
         text-align: center;
         width: auto;
-        grid-row: 1 / span 2;
-      }
-      .women{
-        border: 1px solid hsl(0, 0%, 80%);
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
-        margin-top: 10px;
-        text-align: center;
-        width: auto;
-        /* height: 200px; */
-      }
-      .men{
-        border: 1px solid hsl(0, 0%, 80%);
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
-        margin-top: 10px;
-        text-align: center;
-        width: auto;
-        /* height: 200px; */
-      }
-      .accessories{
-        border: 1px solid hsl(0, 0%, 80%);
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
-        text-align: center;
-        width: auto;
-        height: auto;
-        grid-column: 2 / span 3;
+        padding: 10px;
       }
     }
   }
 }
-.heroFooter{
+.heroFooter {
   display: flex;
   margin: 30px 85px;
   gap: 30px;
   justify-content: space-between;
-  h4{
+  h4 {
     font-family: "League Spartan", sans-serif;
     font-size: 12px;
     font-weight: 600;
     padding-top: 10px;
-    span{
+    span {
       font-weight: 500;
     }
   }
 }
-nav{
-  position: fixed;
+nav {
+  position: sticky;
+  justify-content: space-between;
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   padding: 5px 0;
   top: 15px;
-  gap: 128px;
-  background-color: #FFFFFF;
-  a{
+  margin: 0 85px;
+  /* gap: 128px; */
+  background-color: #ffffff;
+  z-index: 4;
+  a {
     text-decoration: none;
     color: #121212;
   }
-  a:hover{
+  a:hover {
     color: #858383;
   }
-  ul{
+  ul {
     display: flex;
     gap: 32px;
     list-style-type: none;
     font-family: "League Spartan", sans-serif;
     font-weight: 400;
-    h4{
+    h4 {
       font-weight: 400;
       font-size: 14px;
     }
   }
-  .nav-left{
-    margin: 0 0 0 85px;
-    h2{
+  .nav-left {
+    /* margin: 0 0 0 85px; */
+    h2 {
       font-weight: 400;
       font-size: 36px;
       font-family: "League Spartan", sans-serif;
-
     }
   }
-  .nav-right{
-    position: absolute;
-    right: 0;
-    margin: 0 85px 0 0;
+  .nav-right {
     display: flex;
-    gap: 24px;
+    gap: 14px;
   }
-  .nav-middle{
-    margin-left: 70px;
+  .nav-middle {
     padding: 10px;
   }
 }
-.nextSection{
-  .womenHeader{
+.nextSection {
+  .womenHeader {
     display: flex;
     justify-content: space-between;
     margin: 10px 85px 0;
-    div{
+    div {
       display: flex;
       gap: 32px;
-      h3{
+      h3 {
         font-family: "League Spartan", sans-serif;
         font-size: 22px;
         font-weight: 600;
       }
-      h5{
+      h5 {
         font-family: "League Spartan", sans-serif;
         font-size: 12px;
         font-weight: 400;
         color: #858383;
         cursor: pointer;
       }
-      h5:hover{
+      h5:hover {
         color: #121212;
       }
-      .rightSide{
+      .rightSide {
         padding: 10px 0;
       }
     }
   }
-  .seeAll{
+  .seeAll {
     margin: 48px 85px;
     display: flex;
     justify-content: center;
     background-color: #808080;
     padding: 17px;
     cursor: pointer;
-    h4{
-     font-weight: 500;
+    h4 {
+      font-weight: 500;
       font-size: 13px;
       line-height: 100%;
     }
-    h4:hover{
-      color:aliceblue
+    h4:hover {
+      color: aliceblue;
     }
   }
 }
-#men{
+#men {
   scroll-margin-top: 70px;
 }
-#women{
+#women {
   scroll-margin-top: 70px;
 }

@@ -1,78 +1,28 @@
-function Clothings() {
+import React, {useState, useEffect} from "react";
+function Clothings({category}) {
+    const [products,  setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/api/products?category=${category}`)
+            .then(res => res.json())
+            .then(data => setProducts(data))
+            .catch(err => console.error("Error fetching data:", err));
+    }, [category]);
     return(
         <div className="clothingsGrid">
-            <div className="item1 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
+            {products.map((product, index) => (
+                <div key={product._id || index} className={`item${index + 1} card cards`}>
+                    <div className="productImageContainer">
+                        <img src={product.image} alt={product.name} />
+                    </div>
+                    <div className="namePrice">
+                        <h5 id="clotheName">{product.name}</h5>
+                        <div>
+                            <h5 id="price">{product.price}</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="item2 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
-                    </div>
-                </div>
-            </div>
-            <div className="item3 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
-                    </div>
-                </div>
-            </div>
-            <div className="item4 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
-                    </div>
-                </div>
-            </div>
-            <div className="item5 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
-                    </div>
-                </div>
-            </div>
-            <div className="item6 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
-                    </div>
-                </div>
-            </div>
-            <div className="item7 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
-                    </div>
-                </div>
-            </div>
-            <div className="item8 card">
-                <div className="namePrice">
-                    <h5 id="clotheName">SweatShirt</h5>
-                    <div>
-                        <h5 id="price">$</h5>
-
-                    </div>
-                </div>
-            </div>
+            ))}
         </div>
     );
 }

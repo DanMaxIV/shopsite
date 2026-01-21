@@ -12,7 +12,7 @@ function Men(){
                             <h5>FEATURED PRODUCTS</h5>
                         </div>
                     </div>
-                    <Clothings />
+                    <Clothings category= "men" />
                     <div className="seeAll">
                         <h4>SEE ALL</h4>
                     </div>
