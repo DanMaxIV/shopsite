@@ -208,6 +208,7 @@ html {
         object-fit: cover;
         position: absolute;
         z-index: 1;
+        border-radius: 8px;
       }
       .Explore,
       .women,

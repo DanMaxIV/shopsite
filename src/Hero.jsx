@@ -39,7 +39,7 @@ function Hero({ category }) {
 
     useEffect(() => {
         fetchItems();
-        const interval = setInterval(fetchItems, 20000);
+        const interval = setInterval(fetchItems, 5000);
         return () => clearInterval(interval);
     }, []);
 

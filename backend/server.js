@@ -9,7 +9,7 @@ app.use(express.json());
 
 //Local connection
 
-const dbURI = "mongodb+srv://danobad16_db_user:xDYm29qghc8Zlsti@cluster0.171l2wf.mongodb.net/clothingStore?retryWrites=true&w=majority&appName=Cluster0";
+const dbURI = process.env.MONGO_URI;
 
 mongoose.connect(dbURI)
     .then(() => console.log("Connected to Mongo Atlass!"))
