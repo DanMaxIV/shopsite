@@ -358,3 +358,28 @@ nav {
 #men, #women, #Accessories {
   scroll-margin-top: 70px;
 }
+.skeleton-img{
+  background-color: #e0e0e0;
+  height: 240px;
+  border-radius: 8px;
+  width: 100%;
+}
+.skeleton-text{
+  background-color: #e0e0e0;
+  height: 14px;
+  margin-bottom: 12px;
+  width: 80%;
+  border-radius: 4px;
+}
+
+.skeleton-text.short{
+  width: 40%;
+}
+.skeleton-card{
+  animation: pulse 1.5s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% {opacity: 0.6;}
+  50% {opacity: 1;}
+  100% {opacity: 0.6;}
+}
