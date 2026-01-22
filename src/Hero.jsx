@@ -4,20 +4,23 @@ function Hero({ category }) {
     const [exploreItem, setExploreItem] = useState(null);
     const [menItem, setMenItem] = useState(null);
     const [womenItem, setWomenItem] = useState(null);
+    const [accessoryItem, setAccessoryItem] = useState(null);
     const [fade, setFade] = useState(true);
 
     const fetchItems = async () => {
         setFade(false);
 
         try {
-            const [allRes, menRes, womenRes] = await Promise.all([
+            const [allRes, menRes, womenRes, accessoryRes] = await Promise.all([
                 fetch(`http://localhost:5000/api/products`),
                 fetch(`http://localhost:5000/api/products?category=men`),
-                fetch(`http://localhost:5000/api/products?category=women`)
+                fetch(`http://localhost:5000/api/products?category=women`),
+                fetch(`http://localhost:5000/api/products?category=accessories`)
             ]);
             const allData = await allRes.json();
             const menData = await menRes.json();
             const womenData = await womenRes.json();
+            const accessoryData = await accessoryRes.json();
 
             //Random items
             if (allData.length > 0) {
@@ -28,6 +31,9 @@ function Hero({ category }) {
             }
             if (womenData.length > 0) {
                 setWomenItem(womenData[Math.floor(Math.random() * womenData.length)]);
+            }
+            if (accessoryData.length > 0) {
+                setAccessoryItem(accessoryData[Math.floor(Math.random() * accessoryData.length)]);
             }
 
             setTimeout(() => setFade(true), 500)
@@ -82,14 +88,23 @@ function Hero({ category }) {
                                     <img src={menItem.image} alt={menItem.name} />
                                     <div className="hero-text" >
                                         <h2>Men's Collection</h2>
+                                        <p> {menItem.name} </p>
                                     </div>
                                 </>
                             )}
                         </div>
                     </div>
                     <div className="hero-card ornament">
-                        <div className="accessorie">
-
+                        <div className={`accessories ${fade ? 'fade-in' : 'fade-out'}`}>
+                            {accessoryItem && (
+                                <>
+                                    <img src={accessoryItem.image} alt={accessoryItem.name} />
+                                    <div className="hero-text" >
+                                        <h2>Accessories</h2>
+                                        <p>{accessoryItem.name}</p>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>

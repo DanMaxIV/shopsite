@@ -8,7 +8,7 @@ function Navbar() {
               <li><a href="#women"><h4>Women</h4></a></li>
               <li><a href="#men"><h4>Men</h4></a></li>
               <li><a href="#"><h4>Beauty</h4></a></li>
-              <li><a href="#"><h4>Accessories</h4></a></li>
+              <li><a href="#Accessories"><h4>Accessories</h4></a></li>
               <li><a href="#"><h4>Blog</h4></a></li>
               <li><a href="#footer"><h4>Contact</h4></a></li>
             </ul>

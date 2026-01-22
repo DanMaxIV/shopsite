@@ -5,6 +5,7 @@ import HeroFooter from "./HeroFooter.jsx";
 import Women from "./Women.jsx";
 import Men from './Men.jsx'
 import Footer from "./Footer.jsx";
+import Accessories from "./Accessories.jsx";
 
 function App() {
   return(
@@ -15,6 +16,7 @@ function App() {
       <HeroFooter />
       <Women />
       <Men />
+      <Accessories/>
       <Footer />
     </>
   );

@@ -40,6 +40,11 @@ app.get('/api/seed', async (req, res) => {
             { name: "Blue Jeans", price: "$60.00", category: "men", image: "https://picsum.photos/200/300?random=6" },
             { name: "Graphic T-Shirt", price: "$30.00", category: "men", image: "https://picsum.photos/200/300?random=7" },
             { name: "Beige Trench", price: "$120.00", category: "men", image: "https://picsum.photos/200/300?random=8" },
+
+            { name: "Gold Necklace", price: "$30.00", category: "accessories", image: "https://picsum.photos/200/300?random=9" },
+            { name: "Blue WristWatch", price: "$65.00", category: "accessories", image: "https://picsum.photos/200/300?random=10" },
+            { name: "Sapphire Earrings", price: "$35.00", category: "accessories", image: "https://picsum.photos/200/300?random=11" },
+            { name: "Beige HandChain", price: "$20.00", category: "accessories", image: "https://picsum.photos/200/300?random=12" },
         ];
 
         const createdProducts = await Product.insertMany(products);
